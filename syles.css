@@ -1,0 +1,41 @@
+/* Установка шрифта Inter по умолчанию */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #FDF8F6; /* Светлый бежевый фон страницы */
+}
+
+/* Добавляем стили для плавного скролла */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Дополнительные стили для категорий гардероба */
+.category-image {
+    background-size: cover;
+    background-position: center;
+}
+
+/* Стили для адаптивности изображений */
+@media (max-width: 768px) {
+    .category-image {
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+}
+/* Стили для изображений галереи */
+.gallery-image {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Стили для адаптивности изображений галереи */
+@media (max-width: 768px) {
+    .gallery-image {
+        background-size: contain !important;
+        background-repeat: no-repeat;
+    }
+}

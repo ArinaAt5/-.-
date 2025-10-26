@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Гардероб Планировщик</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-brown': '#6F4E37', /* Основной коричневый */
+                        'primary-beige': '#EAE0D7', /* Светло-бежевый для фона */
+                        'accent-caramel': '#D4A57F', /* Акцентный карамельный/золотой */
+                        'light-sand': '#FCF8F5', /* Очень светлый песочный для карточек */
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="text-gray-800">
+
+    <!-- Заголовок и Навигация -->
+    <header class="bg-primary-brown shadow-xl sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex justify-between items-center">
+            <!-- Заголовок -->
+            <h1 class="text-2xl font-bold text-white flex-shrink-0 mr-8">
+                Гардероб Планировщик
+            </h1>
+            <!-- Навигация для настольных компьютеров (Увеличена и Распределена) -->
+            <nav class="hidden md:flex flex-1 justify-between text-lg font-semibold">
+                <a href="#catalog" class="text-primary-beige hover:text-accent-caramel transition duration-150">Каталог</a>
+                <a href="#outfits" class="text-primary-beige hover:text-accent-caramel transition duration-150">Комбинации</a>
+                <a href="#gallery" class="text-primary-beige hover:text-accent-caramel transition duration-150">Галерея</a>
+                <a href="#analysis" class="text-primary-beige hover:text-accent-caramel transition duration-150">Анализ</a>
+                <a href="#shopping" class="text-primary-beige hover:text-accent-caramel transition duration-150">Шопинг-лист</a>
+            </nav>
+            <!-- Кнопка меню для мобильных устройств  -->
+            <button class="md:hidden p-2 rounded-lg text-primary-beige hover:bg-white/10 transition duration-150">
+                <!-- Иконка меню  -->
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Основное Содержимое -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+
+        <!-- Секция: Каталог Гардероба (Визуальные Категории) -->
+        <section id="catalog" class="bg-light-sand p-6 md:p-8 rounded-xl shadow-xl">
+            <h2 class="text-3xl font-semibold mb-6 text-primary-brown">
+                Каталог Гардероба
+            </h2>
+            <p class="text-gray-500 mb-8">
+                Выберите категорию, чтобы увидеть все вещи и добавить новые.
+            </p>
+
+            <!-- Сетка Визуальных Категорий (Обновлено: lg:grid-cols-6) -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
+                <!-- Категория 1: Верхняя одежда -->
+                <div class="group cursor-pointer rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition duration-300">
+                    <div class="aspect-square bg-gray-300 flex items-center justify-center text-primary-brown text-lg font-semibold bg-cover bg-center category-image" data-category="outerwear">
+                        <span class="p-2 bg-black/30 text-white rounded-lg text-sm transition group-hover:bg-black/50">Верхняя одежда</span>
+                    </div>
+                </div>
+                <!-- Категория 2: Свитеры -->
+                <div class="group cursor-pointer rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition duration-300">
+                    <div class="aspect-square bg-gray-300 flex items-center justify-center text-primary-brown text-lg font-semibold bg-cover bg-center category-image" data-category="sweaters">
+                         <span class="p-2 bg-black/30 text-white rounded-lg text-sm transition group-hover:bg-black/50">Свитеры</span>
+                    </div>
+                </div>
+                <!-- Категория 3: Футболки -->
+                <div class="group cursor-pointer rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition duration-300">
+                    <div class="aspect-square bg-gray-300 flex items-center justify-center text-primary-brown text-lg font-semibold bg-cover bg-center category-image" data-category="tshirts">
+                         <span class="p-2 bg-black/30 text-gray-800 rounded-lg text-sm transition group-hover:bg-black/10">Футболки</span>
+                    </div>
+                </div>
+                <!-- Категория 4: Джинсы/Брюки -->
+                <div class="group cursor-pointer rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition duration-300">
+                    <div class="aspect-square bg-gray-300 flex items-center justify-center text-primary-brown text-lg font-semibold bg-cover bg-center category-image" data-category="jeans">
+                         <span class="p-2 bg-white/50 text-primary-brown rounded-lg text-sm transition group-hover:bg-white/70">Джинсы / Брюки</span>
+                    </div>
+                </div>
+                <!-- Категория 5: Обувь -->
+                <div class="group cursor-pointer rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition duration-300">
+                    <div class="aspect-square bg-gray-300 flex items-center justify-center text-primary-brown text-lg font-semibold bg-cover bg-center category-image" data-category="shoes">
+                         <span class="p-2 bg-black/30 text-white rounded-lg text-sm transition group-hover:bg-black/50">Обувь</span>
+                    </div>
+                </div>
+                <!-- Категория 6: Аксессуары и Сумки  -->
+                <div class="group cursor-pointer rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition duration-300">
+                    <div class="aspect-square bg-gray-300 flex items-center justify-center text-primary-brown text-lg font-semibold bg-cover bg-center category-image" data-category="accessories">
+                        <span class="p-2 bg-black/30 text-white rounded-lg text-sm transition group-hover:bg-black/50">Аксессуары и Сумки</span>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <!-- Место для отображения элементов внутри выбранной категории (потом добавится через JS) -->
+            <div id="items-in-category" class="mt-8 pt-6 border-t border-primary-brown/20 hidden">
+                 <h3 class="text-2xl font-semibold mb-4 text-primary-brown">Вещи в категории "Верхняя одежда"</h3>
+                 <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
+                    <!-- Пример карточки (оставлены для демонстрации структуры) -->
+                    <div class="bg-light-sand border border-primary-brown/10 rounded-lg p-3 shadow-sm hover:shadow-md transition cursor-pointer">
+                        <div class="w-full h-32 bg-primary-beige rounded-md mb-2 flex items-center justify-center text-primary-brown text-sm">Фото</div>
+                        <p class="font-medium text-sm truncate">Бежевое пальто</p>
+                        <p class="text-xs text-gray-500">Сезон: Осень</p>
+                    </div>
+                 </div>
+            </div>
+        </section>
+
+        <!-- Секция: Рекомендации по Комбинациям (Образы) -->
+        <section id="outfits" class="bg-primary-beige p-6 md:p-8 rounded-xl shadow-lg">
+            <h2 class="text-3xl font-semibold mb-6 text-primary-brown">
+                Идеи Комбинаций
+            </h2>
+            <p class="text-gray-700 mb-6">
+                Рекомендации по созданию стильных образов на основе вашего гардероба. (Будет генерироваться JS)
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Комбинация 1 -->
+                <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center">
+                    <div class="w-full h-40 bg-gray-200 rounded-md mb-3 flex items-center justify-center text-gray-400 text-sm">
+                        Образ: Джинсы + Рубашка
+                    </div>
+                    <h3 class="font-semibold text-lg mb-1">Повседневный Стиль</h3>
+                    <p class="text-sm text-accent-caramel font-medium">Готов к носке</p>
+                    <button class="mt-3 px-4 py-2 bg-primary-brown text-white text-sm rounded-lg hover:bg-primary-brown/90 transition">
+                        Посмотреть детали
+                    </button>
+                </div>
+                <!-- Комбинация 2 -->
+                <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center">
+                    <div class="w-full h-40 bg-gray-200 rounded-md mb-3 flex items-center justify-center text-gray-400 text-sm">
+                        Образ: Платье + Пальто
+                    </div>
+                    <h3 class="font-semibold text-lg mb-1">Вечерний Выход</h3>
+                    <p class="text-sm text-gray-500">Сезон: Осень</p>
+                    <button class="mt-3 px-4 py-2 bg-primary-beige text-primary-brown text-sm rounded-lg hover:bg-primary-beige/70 transition">
+                        Редактировать
+                    </button>
+                </div>
+                <!-- Комбинация 3 -->
+                <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center">
+                    <div class="w-full h-40 bg-gray-200 rounded-md mb-3 flex items-center justify-center text-gray-400 text-sm">
+                        Образ: Спортивный Костюм
+                    </div>
+                    <h3 class="font-semibold text-lg mb-1">Для Тренировок</h3>
+                    <p class="text-sm text-gray-500">Тип: Спорт</p>
+                    <button class="mt-3 px-4 py-2 bg-primary-beige text-primary-brown text-sm rounded-lg hover:bg-primary-beige/70 transition">
+                        Редактировать
+                    </button>
+                </div>
+            </div>
+        </section>
+
+<!-- Секция: Фотогалерея (Ваши Образы) -->
+<section id="gallery" class="bg-white p-6 md:p-8 rounded-xl shadow-lg">
+    <h2 class="text-3xl font-semibold mb-6 text-primary-brown">
+        Фотогалерея Образов
+    </h2>
+    <p class="text-gray-500 mb-6">
+        Здесь сохраняются ваши любимые и удачные комбинации.
+    </p>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        <!-- Фото 1 -->
+        <div class="aspect-square bg-primary-beige rounded-lg shadow-sm hover:shadow-md transition cursor-zoom-in gallery-image" data-image="komb1" style="background-image: url('images/komb/komb1.jpg'); background-size: cover; background-position: center;"></div>
+        <!-- Фото 2 -->
+        <div class="aspect-square bg-primary-beige rounded-lg shadow-sm hover:shadow-md transition cursor-zoom-in gallery-image" data-image="komb2" style="background-image: url('images/komb/komb2.jpg'); background-size: cover; background-position: center;"></div>
+        <!-- Фото 3 -->
+        <div class="aspect-square bg-primary-beige rounded-lg shadow-sm hover:shadow-md transition cursor-zoom-in gallery-image" data-image="komb3" style="background-image: url('images/komb/komb3.jpg'); background-size: cover; background-position: center;"></div>
+        <!-- Фото 4 -->
+        <div class="aspect-square bg-primary-beige rounded-lg shadow-sm hover:shadow-md transition cursor-zoom-in gallery-image" data-image="komb4" style="background-image: url('images/komb/komb4.jpg'); background-size: cover; background-position: center;"></div>
+        <!-- Фото 5 -->
+        <div class="aspect-square bg-primary-beige rounded-lg shadow-sm hover:shadow-md transition cursor-zoom-in gallery-image" data-image="komb5" style="background-image: url('images/komb/komb5.jpg'); background-size: cover; background-position: center;"></div>
+        <!-- Фото 6 -->
+        <div class="aspect-square bg-primary-beige rounded-lg shadow-sm hover:shadow-md transition cursor-zoom-in gallery-image" data-image="komb6" style="background-image: url('images/komb/komb6.jpg'); background-size: cover; background-position: center;"></div>
+    </div>
+</section>
+
+        <!-- Секция: Анализ Использования -->
+        <section id="analysis" class="bg-primary-beige p-6 md:p-8 rounded-xl shadow-lg">
+            <h2 class="text-3xl font-semibold mb-6 text-primary-brown">
+                Анализ Использования
+            </h2>
+            <p class="text-gray-700 mb-6">
+                Статистика поможет понять, какие вещи вы носите чаще всего, а какие стоит продать. (JS для расчетов)
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                <!-- Метрика 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <p class="text-5xl font-bold text-primary-brown mb-2">45</p>
+                    <p class="text-sm font-medium text-gray-700">Всего предметов</p>
+                </div>
+                <!-- Метрика 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <p class="text-5xl font-bold text-accent-caramel mb-2">78%</p>
+                    <p class="text-sm font-medium text-gray-700">Использовано за 3 мес.</p>
+                </div>
+                <!-- Метрика 3 -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <p class="text-5xl font-bold text-red-600 mb-2">3</p>
+                    <p class="text-sm font-medium text-gray-700">Не носил > 1 года</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Секция: Шопинг-лист (Карточки) -->
+        <section id="shopping" class="bg-white p-6 md:p-8 rounded-xl shadow-lg">
+            <h2 class="text-3xl font-semibold mb-6 text-primary-brown">
+                Шопинг-лист
+            </h2>
+            <p class="text-gray-500 mb-6">
+                Список вещей, которые нужно купить, чтобы дополнить гардероб.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Элемент шопинг-листа 1 -->
+                <div class="bg-light-sand rounded-xl shadow-md p-4 border border-primary-brown/10">
+                    <div class="flex items-start mb-3">
+                        <!-- Фото Placeholder -->
+                        <div class="w-16 h-16 bg-primary-beige rounded-lg flex-shrink-0 mr-4 flex items-center justify-center text-xs text-primary-brown">
+                            Фото
+                        </div>
+                        <div class="flex-grow">
+                            <p class="font-bold text-lg text-primary-brown">Белая рубашка (классика)</p>
+                            <p class="text-sm text-gray-600">Магазин: Zara / Massimo Dutti</p>
+                            <p class="text-xs text-accent-caramel font-medium">Категория: Верх</p>
+                        </div>
+                        <button class="text-red-500 hover:text-red-700 transition ml-2 p-1 rounded-full hover:bg-red-50">
+                             <!-- Иконка корзины -->
+                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                        </button>
+                    </div>
+                </div>
+                 <!-- Элемент шопинг-листа 2 -->
+                <div class="bg-light-sand rounded-xl shadow-md p-4 border border-primary-brown/10">
+                    <div class="flex items-start mb-3">
+                        <!-- Фото Placeholder -->
+                        <div class="w-16 h-16 bg-primary-beige rounded-lg flex-shrink-0 mr-4 flex items-center justify-center text-xs text-primary-brown">
+                            Фото
+                        </div>
+                        <div class="flex-grow">
+                            <p class="font-bold text-lg text-primary-brown">Теплый шарф (бежевый)</p>
+                            <p class="text-sm text-gray-600">Магазин: H&M / 12 Storeez</p>
+                            <p class="text-xs text-accent-caramel font-medium">Категория: Аксессуары</p>
+                        </div>
+                        <button class="text-red-500 hover:text-red-700 transition ml-2 p-1 rounded-full hover:bg-red-50">
+                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Поле ввода для добавления нового элемента (Placeholder) -->
+            <div class="mt-8 pt-6 border-t border-primary-brown/20 flex gap-2">
+                <input type="text" placeholder="Название вещи..." class="w-1/2 p-3 border border-gray-300 rounded-lg focus:ring-accent-caramel focus:border-accent-caramel">
+                <input type="text" placeholder="Магазин или ссылка..." class="w-1/4 p-3 border border-gray-300 rounded-lg focus:ring-accent-caramel focus:border-accent-caramel hidden sm:block">
+                <button class="flex-shrink-0 px-6 py-3 bg-primary-brown text-white font-medium rounded-lg hover:bg-primary-brown/90 transition">
+                    Добавить в список
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Футер -->
+    <footer class="mt-12 bg-primary-brown text-white p-6 text-center">
+        <p class="text-sm">&copy; 2025 Гардероб Планировщик. Все права защищены.</p>
+    </footer>
+
+    <!-- Скрипт для загрузки изображений категорий -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Сопоставление категорий с файлами изображений
+            const categoryImages = {
+                'outerwear': 'images/1.jpg',
+                'sweaters': 'images/2.jpg',
+                'tshirts': 'images/3.jpg',
+                'jeans': 'images/4.jpg',
+                'shoes': 'images/5.jpg',
+                'accessories': 'images/6.jpg'
+            };
+
+            // Установка фоновых изображений для категорий
+            const categoryElements = document.querySelectorAll('.category-image');
+            categoryElements.forEach(element => {
+                const category = element.getAttribute('data-category');
+                if (categoryImages[category]) {
+                    element.style.backgroundImage = `url('${categoryImages[category]}')`;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
